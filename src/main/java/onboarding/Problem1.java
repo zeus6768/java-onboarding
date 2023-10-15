@@ -26,4 +26,9 @@ class Problem1 {
         return result;
     }
 
+    private static int scoreOf(List<Integer> player) {
+        int leftPage = Math.max(addPageDigits(player.get(0)), multiplyPageDigits(player.get(0)));
+        int rightPage = Math.max(addPageDigits(player.get(1)), multiplyPageDigits(player.get(1)));
+        return Math.max(leftPage, rightPage);
+    }
 }

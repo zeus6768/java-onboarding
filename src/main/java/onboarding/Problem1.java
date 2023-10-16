@@ -23,6 +23,10 @@ class Problem1 {
         return isInRange(pages) && isLeftPageOdd(pages) && isRightPageBigger(pages);
     }
 
+    private static boolean isInRange(List<Integer> pages) {
+        return 0 < pages.get(0) && pages.get(0) <= 400 && 0 < pages.get(1) && pages.get(1) <= 400;
+    }
+
     private static int scoreOf(List<Integer> player) {
         int leftPage = Math.max(addPageDigits(player.get(0)), multiplyPageDigits(player.get(0)));
         int rightPage = Math.max(addPageDigits(player.get(1)), multiplyPageDigits(player.get(1)));

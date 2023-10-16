@@ -4,8 +4,10 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while (isRedundant(cryptogram)) {
+            cryptogram = trim(cryptogram);
+        }
+        return cryptogram;
     }
 
     private static boolean isRedundant(String string) {

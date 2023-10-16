@@ -6,22 +6,15 @@ public class Problem7 {
 
     private static final int SHARED_FRIEND_SCORE = 10;
 
-    private static List<String> answer = new ArrayList<>();
-    private static Map<String, Set<String>> relationships = new HashMap<>();
-    private static Map<String, Integer> scores = new HashMap<>();
+    private static final Map<String, Set<String>> relationships = new HashMap<>();
+    private static final Map<String, Integer> scores = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initializeRelationships(friends);
         initializeScores(user, visitors);
         applySharedFriendScore(user);
         List<String> scoreKeys = sortedKeysOf();
-        for (int i = 0; i < 5 && i < scoreKeys.size(); i++) {
-            String name = scoreKeys.get(i);
-            if (scores.get(name) != 0){
-                answer.add(name);
-            }
-        }
-        return answer;
+        return getAnswer(scoreKeys);
     }
 
     private static void initializeRelationships(List<List<String>> friends) {
@@ -71,5 +64,16 @@ public class Problem7 {
             return scores.get(o2).compareTo(scores.get(o1));
         });
         return scoreKeys;
+    }
+
+    private static List<String> getAnswer(List<String> scoreKeys) {
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < 5 && i < scoreKeys.size(); i++) {
+            String name = scoreKeys.get(i);
+            if (scores.get(name) != 0) {
+                answer.add(name);
+            }
+        }
+        return answer;
     }
 }

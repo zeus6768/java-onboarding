@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -17,5 +19,21 @@ public class Problem2 {
             }
         }
         return false;
+    }
+
+    private static String trim(String string) {
+        StringBuilder result = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+        for (char c : string.toCharArray()) {
+            if (!stack.empty() && stack.peek() == c) {
+                stack.pop();
+            } else {
+                stack.push(c);
+            }
+        }
+        for (char c : stack) {
+            result.append(c);
+        }
+        return result.toString();
     }
 }

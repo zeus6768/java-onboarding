@@ -19,6 +19,16 @@ class Problem1 {
         }
     }
 
+    private static boolean isValidPages(List<Integer> pages) {
+        return isInRange(pages) && isLeftPageOdd(pages) && isRightPageBigger(pages);
+    }
+
+    private static int scoreOf(List<Integer> player) {
+        int leftPage = Math.max(addPageDigits(player.get(0)), multiplyPageDigits(player.get(0)));
+        int rightPage = Math.max(addPageDigits(player.get(1)), multiplyPageDigits(player.get(1)));
+        return Math.max(leftPage, rightPage);
+    }
+
     private static int addPageDigits(int page) {
         int result = 0;
         while (page != 0) {
@@ -35,11 +45,5 @@ class Problem1 {
             page /= 10;
         }
         return result;
-    }
-
-    private static int scoreOf(List<Integer> player) {
-        int leftPage = Math.max(addPageDigits(player.get(0)), multiplyPageDigits(player.get(0)));
-        int rightPage = Math.max(addPageDigits(player.get(1)), multiplyPageDigits(player.get(1)));
-        return Math.max(leftPage, rightPage);
     }
 }

@@ -4,19 +4,18 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        try {
+        if (isValidPages(pobi) && isValidPages(crong)) {
             int pobiScore = scoreOf(pobi);
             int crongScore = scoreOf(crong);
-            if (pobiScore < crongScore) {
-                return 2;
-            }
             if (pobiScore > crongScore) {
                 return 1;
             }
+            if (pobiScore < crongScore) {
+                return 2;
+            }
             return 0;
-        } catch (Exception e) {
-            return -1;
         }
+        return -1;
     }
 
     private static boolean isValidPages(List<Integer> pages) {
